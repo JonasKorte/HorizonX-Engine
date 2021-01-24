@@ -129,17 +129,17 @@ namespace HX
 		return true;
 	}
 
-	bool HX_GLWindow::WindowLoop()
+	void HX_GLWindow::Clear()
 	{
-		while (!glfwWindowShouldClose(this->m_window))
-		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	}
 
-			glfwSwapBuffers(this->m_window);
-			glfwPollEvents();
-		}
+	bool HX_GLWindow::Update()
+	{
+		glfwSwapBuffers(this->m_window);
+		glfwPollEvents();
 
-		return true;
+		return !glfwWindowShouldClose(this->m_window);
 	}
 
 	void error_callback(int error, const char* description)
@@ -157,5 +157,10 @@ namespace HX
 		{
 			glViewport(0, 0, width, height);
 		}
+	}
+
+	void HX_GLWindow::SetViewport(float xPosition, float yPosition, float width, float height)
+	{
+		glViewport((GLint)xPosition, (GLint)yPosition, (GLint)width, (GLint)height);
 	}
 }

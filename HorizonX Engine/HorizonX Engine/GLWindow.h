@@ -34,7 +34,9 @@ namespace HX
 
 		bool Initialize();
 
-		bool WindowLoop();
+		void Clear();
+
+		bool Update();
 
 
 		HX_GLWindowData GetWindowData();
@@ -43,6 +45,9 @@ namespace HX
 		~HX_GLWindow();
 
 		void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+
+		void SetViewport(float xPosition, float yPosition, float width, float height);
+
 
 	private:
 		HX_GLWindowData m_windowData;

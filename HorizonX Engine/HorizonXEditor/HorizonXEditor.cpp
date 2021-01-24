@@ -1,5 +1,6 @@
 #include <iostream>
-#include "GLWindow.h"
+#include <GLWindow.h>
+#include "Viewport.h"
 
 int main()
 {
@@ -17,11 +18,21 @@ int main()
         return -1;
     }
 
-    if (wnd->WindowLoop())
+    bool shouldClose = false;
+
+    while (!shouldClose)
     {
-        delete wnd;
-        return 0;
+        wnd->Clear();
+
+        // Render
+
+        // Update GUI
+
+
+        shouldClose = wnd->Update();
     }
+
+    delete wnd;
 
     return 0;
 }
