@@ -29,7 +29,7 @@ int main()
         // Update GUI
 
 
-        shouldClose = wnd->Update();
+        shouldClose = !wnd->Update();
     }
 
     delete wnd;
