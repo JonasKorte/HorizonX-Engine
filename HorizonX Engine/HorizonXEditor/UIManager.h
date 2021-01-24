@@ -1,39 +1,43 @@
 #pragma once
 #include <map>
+#include <string>
+#include <functional>
 
 namespace HXEditor
 {
-	typedef const char* HX_ID;
+	typedef std::string HX_ID;
 
 	struct HX_Component
 	{
 		HX_ID id;
-		
-		void* Load();
-		void* Unload();
-		void* Update();
+		std::function<void()> Load;
+		std::function<void()> Unload;
+		std::function<void()> Update;
+		std::function<void()> Unregister;
 
-		HX_ID parent;
+		bool isLoaded = true;
 	};
 
 	typedef std::map<HX_ID, HX_Component> HX_ComponentCollection;
 
-
 	class HX_UIManager
 	{
 	public:
-		static void RegisterComponent(HX_Component component)
-		{
-			HX_ID id = "0x" + cast<HX_ID>(m_numComponents);
+		static void RegisterComponent(HX_Component component);
+		
+		static void UnregisterComponent(HX_ID id);
 
-			m_numComponents++;
-		}
+		static void LoadComponent(HX_ID id);
 
-	private:
-		static std::map<HX_ComponentCollection, bool> m_components;
+		static void UnloadComponent(HX_ID id);
+
+		static void UpdateComponents();
+
+		static HX_ComponentCollection m_components;
 
 		static int m_numComponents;
 
+	private:
 		static HX_UIManager* m_instance;
 	};
 }

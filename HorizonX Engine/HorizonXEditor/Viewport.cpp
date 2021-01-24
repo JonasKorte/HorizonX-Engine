@@ -24,7 +24,7 @@ namespace HXEditor
 			this->m_viewportActive = false;
 		}
 
-		bool HXEC_Viewport::Load()
+		void HXEC_Viewport::Load()
 		{
 
 			this->m_viewportActive = true;
@@ -38,14 +38,31 @@ namespace HXEditor
 			this->m_window->SetViewport(ImGui::GetWindowContentRegionMin().x, ImGui::GetWindowContentRegionMin().y, ImGui::GetWindowContentRegionMax().x, ImGui::GetWindowContentRegionMax().y);
 		}
 
-		bool HXEC_Viewport::Unload()
+		void HXEC_Viewport::Unload()
 		{
-			delete this;
+			this->m_window->SetViewport(0, 0, 0, 0);
 		}
 
 		void HXEC_Viewport::Update()
 		{
 			this->m_window->SetViewport(ImGui::GetWindowContentRegionMin().x, ImGui::GetWindowContentRegionMin().y, ImGui::GetWindowContentRegionMax().x, ImGui::GetWindowContentRegionMax().y);
+		}
+
+		void HXEC_Viewport::Unregister()
+		{
+			delete this;
+		}
+
+		HX_Component HXEC_Viewport::MakeComponent()
+		{
+			HX_Component component;
+			component.isLoaded = true;
+			component.Load = std::bind(&HXEC_Viewport::Load, this);
+			component.Unload = std::bind(&HXEC_Viewport::Unload, this);
+			component.Update = std::bind(&HXEC_Viewport::Update, this);
+			component.Unregister = std::bind(&HXEC_Viewport::Unregister, this);
+
+			return component;
 		}
 	}
 }

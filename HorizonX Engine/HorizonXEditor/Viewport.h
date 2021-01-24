@@ -3,6 +3,8 @@
 #include <GLWindow.h>
 #include <EditorDefaults.h>
 
+#include "UIManager.h"
+
 #include "imgui.h"
 
 namespace HXEditor
@@ -17,8 +19,12 @@ namespace HXEditor
 
 			~HXEC_Viewport();
 
-			bool Load();
-			bool Unload();
+			HX_Component MakeComponent();
+
+			void Load();
+			void Unload();
+
+			void Unregister();
 
 			void Update();
 
