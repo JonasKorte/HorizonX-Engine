@@ -2,7 +2,7 @@
 
 namespace HX
 {
-	struct HX_EditorDefaults
+	struct __declspec(dllexport) HX_EditorDefaults
 	{
 		static const int defaultViewportX = 128;
 		static const int defaultViewportY = 32;

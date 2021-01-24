@@ -1,0 +1,8 @@
+﻿  GLWindow.cpp
+     Creating library L:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.lib and object L:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.exp
+  Generating code
+  1 of 363 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  HorizonX Engine.vcxproj -> L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\libhorizon.dll

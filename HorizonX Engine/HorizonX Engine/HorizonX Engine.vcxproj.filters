@@ -53,5 +53,8 @@
     <ClInclude Include="Log.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Export.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

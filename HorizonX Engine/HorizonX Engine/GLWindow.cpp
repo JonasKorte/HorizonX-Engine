@@ -43,6 +43,8 @@ namespace HX
 
 	HX_GLWindow::~HX_GLWindow()
 	{
+		LOGINFO("Quiting...");
+
 		glfwDestroyWindow(this->m_window);
 
 		glfwTerminate();
@@ -59,6 +61,11 @@ namespace HX
 		}
 
 		LOGINFO("GLFW Initialized successfully!");
+
+		glfwSetErrorCallback(error_callback);
+
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
 
 		GLFWmonitor* monitor;
 
@@ -96,8 +103,6 @@ namespace HX
 		glfwMakeContextCurrent(this->m_window);
 
 		glfwSetWindowUserPointer(this->m_window, this);
-
-		glfwSetErrorCallback(error_callback);
 
 		auto framebuffer_size_func = [](GLFWwindow* window, int width, int height)
 		{
