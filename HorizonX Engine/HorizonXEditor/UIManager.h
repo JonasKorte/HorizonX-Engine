@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <functional>
+#include <Log.h>
 
 namespace HXEditor
 {
@@ -23,7 +24,7 @@ namespace HXEditor
 	class HX_UIManager
 	{
 	public:
-		static void RegisterComponent(HX_Component component);
+		static HX_ID RegisterComponent(HX_Component component);
 		
 		static void UnregisterComponent(HX_ID id);
 

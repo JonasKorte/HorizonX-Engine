@@ -34,13 +34,16 @@
     <Filter Include="Source Files\Rendering\DirectX 12">
       <UniqueIdentifier>{c1d34cda-865b-4e32-bf75-dcebab7e1830}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Rendering\OpenGL\Internal">
+      <UniqueIdentifier>{04e155d2-bce4-4166-9777-527c4b2c709d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glad.c">
-      <Filter>Source Files\Rendering\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="GLWindow.cpp">
       <Filter>Source Files\Rendering\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files\Rendering\OpenGL\Internal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -38,6 +38,8 @@ namespace HX
 
 		bool Update();
 
+		GLFWwindow* GetWindow();
+
 
 		HX_GLWindowData GetWindowData();
 		void SetWindowData(HX_GLWindowData windowData);
