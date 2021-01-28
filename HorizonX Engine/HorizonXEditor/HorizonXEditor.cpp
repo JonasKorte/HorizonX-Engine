@@ -2,6 +2,7 @@
 #include <GLWindow.h>
 #include "Viewport.h"
 #include "UIManager.h"
+#include "Registry.h"
 
 using namespace HX;
 using namespace HXEditor;
@@ -13,10 +14,17 @@ int main()
 
     NEWLINE();
     NEWLINE();
+    NEWLINE();
 
     LOGINFO("Booting Editor...");
 
-    HX::HX_GLWindow* wnd = new HX::HX_GLWindow("HorizonX Editor v1.0 - <OpenGL 4.6>", 0, 0, 1920, 1080, false);
+    LOG("Executable Path: ");
+    LOG(GetExecutablePath());
+
+    NEWLINE();
+    NEWLINE();
+
+    HX_GLWindow* wnd = new HX_GLWindow("HorizonX Editor v1.0 - <OpenGL 4.6>", 0, 0, 1920, 1080, false);
 
     if (!wnd->Initialize())
     {

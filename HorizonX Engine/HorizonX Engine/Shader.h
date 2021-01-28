@@ -32,6 +32,8 @@ namespace HX
 		bool LoadShader();
 
 	private:
+		const char* m_path;
+
 		HX_ShaderToggles m_toggles;
 
 		HX_ShaderData m_data;

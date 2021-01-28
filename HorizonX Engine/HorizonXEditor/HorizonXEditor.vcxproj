@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="HorizonXEditor.cpp" />
+    <ClCompile Include="Registry.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>
@@ -157,6 +158,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Registry.h" />
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>

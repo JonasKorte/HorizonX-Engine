@@ -1,15 +1,11 @@
-﻿  glad.c
-  HorizonXEditor.cpp
-L:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\HorizonXEditor.cpp(37,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-L:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\HorizonXEditor.cpp(37,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  imgui_impl_glfw.cpp
-  imgui_impl_opengl3.cpp
-  UIManager.cpp
-  Viewport.cpp
-     Creating library L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.lib and object L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exp
+﻿  HorizonXEditor.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+Q:\HorizonX-Engine\HorizonX Engine\Include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  Registry.cpp
+     Creating library Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.lib and object Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exp
   Generating code
-  1093 of 1381 functions (79.1%) were compiled, the rest were copied from previous compilation.
-    245 functions were new in current compilation
-    35 functions had inline decision re-evaluated but remain unchanged
+  Compiler switch has changed, fall back to full compilation.
+Q:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\Registry.cpp(16): warning C4172: returning address of local variable or temporary: value
+  All 164 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  HorizonXEditor.vcxproj -> L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exe
+  HorizonXEditor.vcxproj -> Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exe

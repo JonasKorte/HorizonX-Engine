@@ -36,6 +36,9 @@
     <ClCompile Include="UIManager.cpp">
       <Filter>Source Files\EditorUI</Filter>
     </ClCompile>
+    <ClCompile Include="Registry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Viewport.h">
@@ -43,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="UIManager.h">
       <Filter>Header Files\EditorUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Registry.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
