@@ -17,17 +17,25 @@ namespace HX
 	{
 		const char* vertexData;
 		const char* fragmentData;
-		const char* fragmentData;
+		const char* geometryData;
+		const char* tesselationData;
+		const char* computeData;
 	};
 
 	class HX_API HX_Shader
 	{
 	public:
-		HX_Shader(const char* path);
+		HX_Shader(const char* path, HX_ShaderToggles toggles);
 
-		bool Bind();
+		bool BindShader();
+
+		bool LoadShader();
 
 	private:
+		HX_ShaderToggles m_toggles;
 
+		HX_ShaderData m_data;
+
+		HX_ShaderData ParseShader(const char* data);
 	};
 }
