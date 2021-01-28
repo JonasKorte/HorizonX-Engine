@@ -5,11 +5,11 @@
 
 #include "Log.h"
 #include "EditorDefaults.h"
-#include "Export.h"
+#include "API.h"
 
 namespace HX
 {
-	struct EXPORT HX_GLWindowData
+	struct HX_API HX_GLWindowData
 	{
 		const char* windowTitle;
 		int xPosition;
@@ -23,9 +23,9 @@ namespace HX
 		int viewportHeight;
 	};
 
-	void EXPORT error_callback(int error, const char* description);
+	void HX_API error_callback(int error, const char* description);
 
-	class EXPORT HX_GLWindow
+	class HX_API HX_GLWindow
 	{
 	public:
 		HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height, bool isEditor);

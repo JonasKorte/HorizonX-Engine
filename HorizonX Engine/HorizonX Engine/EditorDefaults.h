@@ -1,9 +1,9 @@
 #pragma once
-#include "Export.h"
+#include "API.h"
 
 namespace HX
 {
-	struct EXPORT HX_EditorDefaults
+	struct HX_API HX_EditorDefaults
 	{
 		static const int defaultViewportX = 0;
 		static const int defaultViewportY = 0;

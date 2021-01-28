@@ -56,7 +56,10 @@
     <ClInclude Include="Log.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Export.h">
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="API.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
