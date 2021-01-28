@@ -116,7 +116,7 @@ namespace HX
 
 		glfwSetFramebufferSizeCallback(this->m_window, framebuffer_size_func);
 
-		glClearColor(0.25f, 0.25f, 0.3f, 1.0f);
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 		glViewport(this->m_windowData.viewportX, this->m_windowData.viewportY, this->m_windowData.viewportWidth, this->m_windowData.viewportHeight);
 
