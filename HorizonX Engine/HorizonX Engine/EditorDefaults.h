@@ -1,8 +1,9 @@
 #pragma once
+#include "Export.h"
 
 namespace HX
 {
-	struct __declspec(dllexport) HX_EditorDefaults
+	struct EXPORT HX_EditorDefaults
 	{
 		static const int defaultViewportX = 0;
 		static const int defaultViewportY = 0;

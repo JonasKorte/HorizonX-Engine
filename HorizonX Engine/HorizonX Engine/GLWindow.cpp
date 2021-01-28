@@ -10,21 +10,10 @@ namespace HX
 		this->m_windowData.width = width;
 		this->m_windowData.height = height;
 		this->m_windowData.isEditor = isEditor;
-
-		if (this->m_windowData.isEditor)
-		{
-			this->m_windowData.viewportX = HX_EditorDefaults::defaultViewportX;
-			this->m_windowData.viewportY = HX_EditorDefaults::defaultViewportY;
-			this->m_windowData.viewportWidth = HX_EditorDefaults::defaultViewportWidth;
-			this->m_windowData.viewportWidth = HX_EditorDefaults::defaultViewportWidth;
-		}
-		else
-		{
-			this->m_windowData.viewportX = 0;
-			this->m_windowData.viewportY = 0;
-			this->m_windowData.viewportWidth = 1920;
-			this->m_windowData.viewportWidth = 1080;
-		}
+		this->m_windowData.viewportX = 0;
+		this->m_windowData.viewportY = 0;
+		this->m_windowData.viewportWidth = width;
+		this->m_windowData.viewportWidth = height;
 
 		this->m_window = NULL;
 	}
@@ -105,6 +94,8 @@ namespace HX
 
 		glfwMakeContextCurrent(this->m_window);
 
+		glfwSwapInterval(1);
+
 		glfwSetWindowUserPointer(this->m_window, this);
 
 		LOGINFO("Loading OpenGL...");
@@ -125,7 +116,7 @@ namespace HX
 
 		glfwSetFramebufferSizeCallback(this->m_window, framebuffer_size_func);
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.25f, 0.25f, 0.3f, 1.0f);
 
 		glViewport(this->m_windowData.viewportX, this->m_windowData.viewportY, this->m_windowData.viewportWidth, this->m_windowData.viewportHeight);
 
@@ -152,19 +143,15 @@ namespace HX
 
 	void HX_GLWindow::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	{
-		if (this->m_windowData.isEditor)
-		{
-			return;
-		}
-		else
-		{
-			glViewport(0, 0, width, height);
-		}
+		glViewport(0, 0, width, height);
 	}
 
 	void HX_GLWindow::SetViewport(float xPosition, float yPosition, float width, float height)
 	{
-		glViewport((GLint)xPosition, (GLint)yPosition, (GLint)width, (GLint)height);
+		this->m_windowData.viewportX = xPosition;
+		this->m_windowData.viewportY = yPosition;
+		this->m_windowData.width = width;
+		this->m_windowData.height = height;
 	}
 
 	GLFWwindow* HX_GLWindow::GetWindow()

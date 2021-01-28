@@ -1,3 +1,7 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(491,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (HorizonX Engine.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   GLWindow.cpp
-  HorizonX Engine.vcxproj -> L:\HorizonX-Engine\HorizonX Engine\x64\Debug\libhorizon.dll
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(151,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(152,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(153,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(154,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  HorizonX Engine.vcxproj -> Q:\HorizonX-Engine\HorizonX Engine\x64\Debug\libhorizon.dll

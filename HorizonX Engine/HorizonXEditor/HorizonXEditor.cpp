@@ -35,54 +35,60 @@ int main()
 
     auto& _io = ImGui::GetIO();
 
-    _io.DisplaySize = ImVec2(wnd->GetWindowData().viewportWidth, wnd->GetWindowData().viewportHeight);
+    _io.DisplaySize = ImVec2(wnd->GetWindowData().width, wnd->GetWindowData().height);
     _io.DeltaTime = 1.f / 60.f;
 
+    unsigned char* p;
+    int w, h;
+
+    _io.Fonts->GetTexDataAsRGBA32(&p, &w, &h);
+
     ImGui_ImplGlfw_InitForOpenGL(wnd->GetWindow(), true);
-    ImGui_ImplOpenGL3_Init("#version 330");
+    ImGui_ImplOpenGL3_Init(NULL);
 
-    ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
-    ImGui::NewFrame();
+    //HXEC_Viewport* viewport = new HXEC_Viewport(wnd, "Scene View");
 
-    HXEC_Viewport* viewport = new HXEC_Viewport(wnd, "Scene View");
+    //HX_Component viewportComponent = viewport->MakeComponent();
 
-    HX_Component viewportComponent = viewport->MakeComponent();
+    // (viewportComponent.id == "")
+    //{
+        //return -1;
+   // }
 
-    if (viewportComponent.id == "")
-    {
-        return -1;
-    }
-
-    HX_UIManager::LoadComponent(viewportComponent.id);
+    //HX_UIManager::LoadComponent(viewportComponent.id);
 
     bool shouldClose = false;
 
     while (!shouldClose)
     {
-        ImGui::EndFrame();
-
         wnd->Clear();
 
-        // Render
-
-        // Update GUI
+        ImGui::NewFrame();
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
-        ImGui::NewFrame();
 
-        HX_UIManager::UpdateComponents();
+        //HX_UIManager::UpdateComponents()
+
+        bool show_demo = true;
+
+        ImGui::ShowDemoWindow(&show_demo);
+
+        show_demo = true;
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+
+        ImGui::EndFrame();
+
 
         shouldClose = !wnd->Update();
     }
 
 
-    HX_UIManager::UnloadComponent(viewportComponent.id);
+    //HX_UIManager::UnloadComponent(viewportComponent.id);
 
-    HX_UIManager::UnregisterComponent(viewportComponent.id);
+    //HX_UIManager::UnregisterComponent(viewportComponent.id);
 
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
