@@ -25,6 +25,18 @@
     <Filter Include="Header Files\EditorUI\Components">
       <UniqueIdentifier>{08d847f2-2abf-4050-8fba-43e2a5530ca1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\OpenGL">
+      <UniqueIdentifier>{cc9ff44c-e1d8-4bdc-b1ed-f8b7656ebcdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OpenGL\Internal">
+      <UniqueIdentifier>{11ad7cff-ce1a-4084-b581-c1e3333b8566}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EditorUI\ImGui">
+      <UniqueIdentifier>{b5cf63cf-9216-4198-a653-913996646d48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EditorUI\ImGui">
+      <UniqueIdentifier>{715adcdc-2410-47dd-95d8-eb70dd2b9bec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HorizonXEditor.cpp">
@@ -39,6 +51,30 @@
     <ClCompile Include="Registry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files\OpenGL\Internal</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_demo.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_draw.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_glfw.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_impl_opengl3.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_tables.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui_widgets.cpp">
+      <Filter>Source Files\EditorUI\ImGui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Viewport.h">
@@ -49,6 +85,30 @@
     </ClInclude>
     <ClInclude Include="Registry.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imconfig.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_glfw.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_impl_opengl3.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imgui_internal.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_rectpack.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_textedit.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="imstb_truetype.h">
+      <Filter>Header Files\EditorUI\ImGui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

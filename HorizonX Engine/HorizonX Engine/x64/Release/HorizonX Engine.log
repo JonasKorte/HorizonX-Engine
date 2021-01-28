@@ -1,12 +1,12 @@
 ﻿  GLWindow.cpp
-Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(151,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(152,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(153,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(154,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(139,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(140,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(141,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+Q:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(142,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
      Creating library Q:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.lib and object Q:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.exp
   Generating code
-  0 of 367 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  0 of 360 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   HorizonX Engine.vcxproj -> Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\libhorizon.dll

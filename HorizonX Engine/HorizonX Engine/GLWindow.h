@@ -16,7 +16,6 @@ namespace HX
 		int yPosition;
 		int width;
 		int height;
-		bool isEditor;
 		int viewportX;
 		int viewportY;
 		int viewportWidth;
@@ -28,7 +27,7 @@ namespace HX
 	class HX_API HX_GLWindow
 	{
 	public:
-		HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height, bool isEditor);
+		HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height);
 		HX_GLWindow(HX_GLWindowData windowData);
 		HX_GLWindow(const HX_GLWindow& window);
 

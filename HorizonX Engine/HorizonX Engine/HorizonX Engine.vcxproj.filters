@@ -28,12 +28,6 @@
     <Filter Include="Header Files\Rendering\OpenGL">
       <UniqueIdentifier>{1ba7f547-0d10-4a9d-9c25-526f6dcf3a05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Rendering\DirectX 12">
-      <UniqueIdentifier>{c4f3caf5-d8e8-4933-a562-874844ff08ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Rendering\DirectX 12">
-      <UniqueIdentifier>{c1d34cda-865b-4e32-bf75-dcebab7e1830}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Rendering\OpenGL\Internal">
       <UniqueIdentifier>{04e155d2-bce4-4166-9777-527c4b2c709d}</UniqueIdentifier>
     </Filter>

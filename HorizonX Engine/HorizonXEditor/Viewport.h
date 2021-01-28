@@ -2,6 +2,7 @@
 #include <Log.h>
 #include <GLWindow.h>
 #include <EditorDefaults.h>
+#include "imgui.h"
 
 #include "UIManager.h"
 
@@ -12,7 +13,7 @@ namespace HXEditor
 		class HXEC_Viewport
 		{
 		public:
-			HXEC_Viewport(HX::HX_GLWindow* window, const char* title);
+			HXEC_Viewport(const char* title);
 			HXEC_Viewport(HXEC_Viewport& viewport);
 
 			~HXEC_Viewport();
@@ -28,8 +29,6 @@ namespace HXEditor
 
 		private:
 			const char* m_title;
-
-			HX::HX_GLWindow* m_window;
 
 			bool m_viewportActive;
 		};

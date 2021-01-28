@@ -1,11 +1,10 @@
 ﻿  HorizonXEditor.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.17763.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
 Q:\HorizonX-Engine\HorizonX Engine\Include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-  Registry.cpp
      Creating library Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.lib and object Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exp
   Generating code
-  Compiler switch has changed, fall back to full compilation.
-Q:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\Registry.cpp(16): warning C4172: returning address of local variable or temporary: value
-  All 164 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 1706 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    14 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   HorizonXEditor.vcxproj -> Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exe

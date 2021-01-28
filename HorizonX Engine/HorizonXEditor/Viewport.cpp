@@ -4,16 +4,14 @@ namespace HXEditor
 {
 	namespace Components
 	{
-		HXEC_Viewport::HXEC_Viewport(HX::HX_GLWindow* window, const char* title)
+		HXEC_Viewport::HXEC_Viewport(const char* title)
 		{
-			this->m_window = window;
 			this->m_title = title;
 			this->m_viewportActive = false;
 		}
 
 		HXEC_Viewport::HXEC_Viewport(HXEC_Viewport& viewport)
 		{
-			this->m_window = viewport.m_window;
 			this->m_title = viewport.m_title;
 			this->m_viewportActive = false;
 		}
@@ -26,16 +24,28 @@ namespace HXEditor
 		void HXEC_Viewport::Load()
 		{
 			this->m_viewportActive = true;
+
+			ImGui::SetNextWindowSize(ImVec2(HX::HX_EditorDefaults::defaultViewportWidth, HX::HX_EditorDefaults::defaultViewportHeight));
+			ImGui::SetNextWindowPos(ImVec2(HX::HX_EditorDefaults::defaultViewportX, HX::HX_EditorDefaults::defaultViewportY));
+
+			ImGui::Begin("Viewport", NULL, ImGuiCond_FirstUseEver);
+
+			ImGui::End();
 		}
 
 		void HXEC_Viewport::Unload()
 		{
-			this->m_window->SetViewport(0, 0, 0, 0);
+			this->m_viewportActive = false;
 		}
 
 		void HXEC_Viewport::Update()
 		{
+			ImGui::Begin("Viewport");
 
+
+			glViewport(ImGui::GetWindowContentRegionMin().x, ImGui::GetWindowContentRegionMin().y, ImGui::GetWindowSize().x, ImGui::GetWindowSize().y);
+
+			ImGui::End();
 		}
 
 		void HXEC_Viewport::Unregister()

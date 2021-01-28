@@ -2,14 +2,13 @@
 
 namespace HX
 {
-	HX_GLWindow::HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height, bool isEditor)
+	HX_GLWindow::HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height)
 	{
 		this->m_windowData.windowTitle = windowTitle;
 		this->m_windowData.xPosition = xPosition;
 		this->m_windowData.yPosition = yPosition;
 		this->m_windowData.width = width;
 		this->m_windowData.height = height;
-		this->m_windowData.isEditor = isEditor;
 		this->m_windowData.viewportX = 0;
 		this->m_windowData.viewportY = 0;
 		this->m_windowData.viewportWidth = width;
@@ -53,18 +52,7 @@ namespace HX
 
 		glfwSetErrorCallback(error_callback);
 
-		GLFWmonitor* monitor;
-
-		if (this->m_windowData.isEditor)
-		{
-			monitor = NULL;
-
-			glfwWindowHint(GLFW_MAXIMIZED, 1);
-		}
-		else
-		{
-			monitor = glfwGetPrimaryMonitor();
-		}
+		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 
 		glfwWindowHint(GLFW_RED_BITS, 8);
 		glfwWindowHint(GLFW_GREEN_BITS, 8);
@@ -79,8 +67,8 @@ namespace HX
 		LOGINFO("Creating window...");
 
 
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 		this->m_window = glfwCreateWindow(this->m_windowData.width, this->m_windowData.height, this->m_windowData.windowTitle, monitor, NULL);
 
 		if (!this->m_window)
