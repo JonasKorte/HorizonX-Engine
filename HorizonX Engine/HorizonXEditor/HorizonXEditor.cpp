@@ -1,8 +1,5 @@
 #include <iostream>
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
 #include <GLWindow.h>
-#include "imgui_impl_opengl3.h"
 #include "Viewport.h"
 #include "UIManager.h"
 

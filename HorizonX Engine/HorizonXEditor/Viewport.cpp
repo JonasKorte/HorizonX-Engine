@@ -35,14 +35,7 @@ namespace HXEditor
 
 		void HXEC_Viewport::Update()
 		{
-			ImGui::SetNextWindowContentSize(ImVec2(HX::HX_EditorDefaults::defaultViewportWidth, HX::HX_EditorDefaults::defaultViewportHeight));
-			ImGui::SetNextWindowPos(ImVec2(HX::HX_EditorDefaults::defaultViewportX, HX::HX_EditorDefaults::defaultViewportY));
 
-			ImGui::Begin(this->m_title, &m_viewportActive);
-
-			//this->m_window->SetViewport(ImGui::GetWindowContentRegionMin().x, ImGui::GetWindowContentRegionMin().y, ImGui::GetWindowContentRegionMax().x, ImGui::GetWindowContentRegionMax().y);
-
-			ImGui::End();
 		}
 
 		void HXEC_Viewport::Unregister()

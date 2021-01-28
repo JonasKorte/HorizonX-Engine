@@ -5,8 +5,6 @@
 
 #include "UIManager.h"
 
-#include "imgui.h"
-
 namespace HXEditor
 {
 	namespace Components
