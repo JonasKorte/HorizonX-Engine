@@ -19,7 +19,7 @@ int main()
 
     LOGINFO("Booting Editor...");
 
-    HX::HX_GLWindow* wnd = new HX::HX_GLWindow("HorizonX Editor v1.0 - <OpenGL 3.3>", 0, 0, 1920, 1080, false);
+    HX::HX_GLWindow* wnd = new HX::HX_GLWindow("HorizonX Editor v1.0 - <OpenGL 4.6>", 0, 0, 1920, 1080, false);
 
     if (!wnd->Initialize())
     {
