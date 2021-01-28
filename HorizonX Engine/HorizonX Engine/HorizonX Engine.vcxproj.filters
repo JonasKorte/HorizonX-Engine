@@ -39,6 +39,9 @@
     <ClCompile Include="glad.c">
       <Filter>Source Files\Rendering\OpenGL\Internal</Filter>
     </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files\Rendering\OpenGL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLWindow.h">
@@ -50,11 +53,11 @@
     <ClInclude Include="Log.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="API.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files\Rendering\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

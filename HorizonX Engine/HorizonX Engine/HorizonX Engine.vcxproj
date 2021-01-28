@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="GLWindow.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EditorDefaults.h" />
