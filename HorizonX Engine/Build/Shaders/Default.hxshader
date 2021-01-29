@@ -1,7 +1,5 @@
-[HXShader Version 1.0 GLSLVersion 330]
-
-vertex {
-    #version $GLSLVersion
+<vertex>
+    #version 330
 
     layout(location = 0) in vec3 vertexPosition_modelspace;
 
@@ -9,14 +7,14 @@ vertex {
         gl_Position.xyz = vertexPosition_modelspace;
         gl_Position.w = 1.0;
     }
-}
+</vertex>
 
-fragment{
-    #version $GLSLVersion
+<fragment>
+    #version 330
 
     out vec4 color;
 
     void main() {
         color = vec3(1, 0, 1);
     }
-}
+</fragment>
