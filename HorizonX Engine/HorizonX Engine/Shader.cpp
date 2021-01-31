@@ -72,13 +72,21 @@ namespace HX
 
 		if (this->m_toggles.hasTesselation)
 		{
-			this->m_tesselationShader = glCreateShader(GL_TESS_CONTROL_SHADER);
+			this->m_tesselationControlShader = glCreateShader(GL_TESS_CONTROL_SHADER);
 
-			glShaderSource(this->m_tesselationShader, 1, &this->m_data.tesselationData, NULL);
+			glShaderSource(this->m_tesselationControlShader, 1, &this->m_data.tesselationControlData, NULL);
 
-			glCompileShader(this->m_tesselationShader);
+			glCompileShader(this->m_tesselationControlShader);
 
-			glAttachShader(this->m_shaderProgram, this->m_tesselationShader);
+			glAttachShader(this->m_shaderProgram, this->m_tesselationControlShader);
+
+			this->m_tesselationEvalShader = glCreateShader(GL_TESS_EVALUATION_SHADER);
+
+			glShaderSource(this->m_tesselationEvalShader, 1, &this->m_data.tesselationEvalData, NULL);
+
+			glCompileShader(this->m_tesselationEvalShader);
+
+			glAttachShader(this->m_shaderProgram, this->m_tesselationEvalShader);
 		}
 
 		if (this->m_toggles.hasCompute)
@@ -129,9 +137,13 @@ namespace HX
 
 		if (this->m_toggles.hasTesselation)
 		{
-			glDetachShader(this->m_shaderProgram, this->m_tesselationShader);
+			glDetachShader(this->m_shaderProgram, this->m_tesselationControlShader);
 
-			glDeleteShader(this->m_tesselationShader);
+			glDeleteShader(this->m_tesselationControlShader);
+
+			glDetachShader(this->m_shaderProgram, this->m_tesselationEvalShader);
+
+			glDeleteShader(this->m_tesselationEvalShader);
 		}
 
 		if (this->m_toggles.hasCompute)
@@ -189,9 +201,14 @@ namespace HX
 					current = "geometry";
 				}
 
-				else if (token == "<tesselation>")
+				else if (token == "<tess_control>")
 				{
-					current = "tesselation";
+					current = "tesselation_control";
+				}
+
+				else if (token == "<tess_eval>")
+				{
+					current = "tesselation_eval";
 				}
 
 				else if (token == "<compute>")
@@ -287,7 +304,7 @@ namespace HX
 				}
 			}
 
-			else if (current == "tesselation")
+			else if (current == "tesselation_control")
 			{
 				char c = data[i];
 				token += c;
@@ -305,10 +322,39 @@ namespace HX
 					token = "";
 				}
 
-				if (token == "</tesselation>")
+				if (token == "</tess_control>")
 				{
-					shader.erase(shader.end() - 11, shader.end());
-					shaderSource.tesselationData = shader.c_str();
+					shader.erase(shader.end() - 15, shader.end());
+					shaderSource.tesselationControlData = shader.c_str();
+
+					token = "";
+					current = "";
+					shader = "";
+				}
+			}
+
+			else if (current == "tesselation_evaluation")
+			{
+				char c = data[i];
+				token += c;
+
+				shader += c;
+
+				if (c == '\n')
+				{
+					token = "";
+					line++;
+				}
+
+				if (c == ' ')
+				{
+					token = "";
+				}
+
+				if (token == "</tess_eval>")
+				{
+					shader.erase(shader.end() - 12, shader.end());
+					shaderSource.tesselationControlData = shader.c_str();
 
 					token = "";
 					current = "";
@@ -336,7 +382,7 @@ namespace HX
 
 				if (token == "</compute>")
 				{
-					shader.erase(shader.end() - 11, shader.end());
+					shader.erase(shader.end() - 10, shader.end());
 					shaderSource.computeData = shader.c_str();
 
 					token = "";

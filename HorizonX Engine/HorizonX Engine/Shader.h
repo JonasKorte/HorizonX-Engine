@@ -21,7 +21,8 @@ namespace HX
 		const char* vertexData;
 		const char* fragmentData;
 		const char* geometryData;
-		const char* tesselationData;
+		const char* tesselationControlData;
+		const char* tesselationEvalData;
 		const char* computeData;
 	};
 
@@ -55,7 +56,9 @@ namespace HX
 
 		GLuint m_geometryShader;
 
-		GLuint m_tesselationShader;
+		GLuint m_tesselationControlShader;
+
+		GLuint m_tesselationEvalShader;
 
 		GLuint m_computeShader;
 	};

@@ -1,7 +1,13 @@
-﻿  Shader.cpp
-     Creating library Q:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.lib and object Q:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.exp
+﻿  glad.c
+  GLWindow.cpp
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(139,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(140,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(141,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(142,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Shader.cpp
+     Creating library L:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.lib and object L:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.exp
   Generating code
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  Previous IPDB was built with incompatible compiler, fall back to full compilation.
   All 527 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
-  HorizonX Engine.vcxproj -> Q:\HorizonX-Engine\HorizonX Engine\Build\Bin64\libhorizon.dll
+  HorizonX Engine.vcxproj -> L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\libhorizon.dll
