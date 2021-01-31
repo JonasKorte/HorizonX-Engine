@@ -20,7 +20,20 @@ namespace HX
 
 	bool HX_Shader::LoadShader()
 	{
+
 		std::ifstream ifs(this->m_path);
+
+		if (ifs.fail())
+		{
+			std::string error = "Shader not found at: ";
+
+			error.append(this->m_path);
+			error.append("!");
+
+			LOGERR(error);
+
+			return false;
+		}
 
 		const char* raw = "";
 
@@ -35,6 +48,8 @@ namespace HX
 
 		HX_ShaderData data = this->ParseShader(raw);
 
+		int success = 0;
+
 		this->m_shaderProgram = glCreateProgram();
 
 		if (this->m_toggles.hasVertex)
@@ -44,6 +59,15 @@ namespace HX
 			glShaderSource(this->m_vertexShader, 1, &this->m_data.vertexData, NULL);
 
 			glCompileShader(this->m_vertexShader);
+
+			glGetShaderiv(this->m_vertexShader, GL_COMPILE_STATUS, &success);
+
+			if (!success)
+			{
+				LOGERR("Vertex shader failed to compile!");
+
+				return false;
+			}
 
 			glAttachShader(this->m_shaderProgram, this->m_vertexShader);
 		}
@@ -56,6 +80,15 @@ namespace HX
 
 			glCompileShader(this->m_fragmentShader);
 
+			glGetShaderiv(this->m_fragmentShader, GL_COMPILE_STATUS, &success);
+
+			if (!success)
+			{
+				LOGERR("Fragment shader failed to compile!");
+
+				return false;
+			}
+
 			glAttachShader(this->m_shaderProgram, this->m_fragmentShader);
 		}
 
@@ -66,6 +99,15 @@ namespace HX
 			glShaderSource(this->m_geometryShader, 1, &this->m_data.geometryData, NULL);
 
 			glCompileShader(this->m_geometryShader);
+
+			glGetShaderiv(this->m_geometryShader, GL_COMPILE_STATUS, &success);
+
+			if (!success)
+			{
+				LOGERR("Geometry shader failed to compile!");
+
+				return false;
+			}
 
 			glAttachShader(this->m_shaderProgram, this->m_geometryShader);
 		}
@@ -78,6 +120,15 @@ namespace HX
 
 			glCompileShader(this->m_tesselationControlShader);
 
+			glGetShaderiv(this->m_tesselationControlShader, GL_COMPILE_STATUS, &success);
+
+			if (!success)
+			{
+				LOGERR("Tesselation Control shader failed to compile!");
+
+				return false;
+			}
+
 			glAttachShader(this->m_shaderProgram, this->m_tesselationControlShader);
 
 			this->m_tesselationEvalShader = glCreateShader(GL_TESS_EVALUATION_SHADER);
@@ -85,6 +136,15 @@ namespace HX
 			glShaderSource(this->m_tesselationEvalShader, 1, &this->m_data.tesselationEvalData, NULL);
 
 			glCompileShader(this->m_tesselationEvalShader);
+
+			glGetShaderiv(this->m_tesselationEvalShader, GL_COMPILE_STATUS, &success);
+
+			if (!success)
+			{
+				LOGERR("Tesselation Evaluation shader failed to compile!");
+
+				return false;
+			}
 
 			glAttachShader(this->m_shaderProgram, this->m_tesselationEvalShader);
 		}
@@ -97,10 +157,56 @@ namespace HX
 
 			glCompileShader(this->m_computeShader);
 
+			glGetShaderiv(this->m_computeShader, GL_COMPILE_STATUS, &success);
+
+			if (!success)
+			{
+				LOGERR("Compute shader failed to compile!");
+
+				return false;
+			}
+
 			glAttachShader(this->m_shaderProgram, this->m_computeShader);
 		}
 
 		glLinkProgram(this->m_shaderProgram);
+
+		glGetProgramiv(this->m_shaderProgram, GL_LINK_STATUS, &success);
+
+		if (!success)
+		{
+			LOGERR("Shader program failed to compile!");
+
+			return false;
+		}
+
+		if (this->m_toggles.hasVertex)
+		{
+			glDeleteShader(this->m_vertexShader);
+		}
+
+		if (this->m_toggles.hasFragment)
+		{
+			glDeleteShader(this->m_fragmentShader);
+		}
+
+		if (this->m_toggles.hasGeometry)
+		{
+			glDeleteShader(this->m_geometryShader);
+		}
+
+		if (this->m_toggles.hasTesselation)
+		{
+			glDeleteShader(this->m_tesselationControlShader);
+
+
+			glDeleteShader(this->m_tesselationEvalShader);
+		}
+
+		if (this->m_toggles.hasCompute)
+		{
+			glDeleteShader(this->m_computeShader);
+		}
 
 		return true;
 	}
@@ -114,46 +220,21 @@ namespace HX
 
 	HX_Shader::~HX_Shader()
 	{
-		if (this->m_toggles.hasVertex)
-		{
-			glDetachShader(this->m_shaderProgram, this->m_vertexShader);
-
-			glDeleteShader(this->m_vertexShader);
-		}
-
-		if (this->m_toggles.hasFragment)
-		{
-			glDetachShader(this->m_shaderProgram, this->m_fragmentShader);
-
-			glDeleteShader(this->m_fragmentShader);
-		}
-
-		if (this->m_toggles.hasGeometry)
-		{
-			glDetachShader(this->m_shaderProgram, this->m_geometryShader);
-
-			glDeleteShader(this->m_geometryShader);
-		}
-
-		if (this->m_toggles.hasTesselation)
-		{
-			glDetachShader(this->m_shaderProgram, this->m_tesselationControlShader);
-
-			glDeleteShader(this->m_tesselationControlShader);
-
-			glDetachShader(this->m_shaderProgram, this->m_tesselationEvalShader);
-
-			glDeleteShader(this->m_tesselationEvalShader);
-		}
-
-		if (this->m_toggles.hasCompute)
-		{
-			glDetachShader(this->m_shaderProgram, this->m_computeShader);
-
-			glDeleteShader(this->m_computeShader);
-		}
-
 		glDeleteProgram(this->m_shaderProgram);
+	}
+	void HX_Shader::SetBool(const std::string& name, bool value)
+	{
+		glUniform1i(glGetUniformLocation(this->m_shaderProgram, name.c_str()), (int)value);
+	}
+
+	void HX_Shader::SetInt(const std::string& name, int value)
+	{
+		glUniform1i(glGetUniformLocation(this->m_shaderProgram, name.c_str()), value);
+	}
+
+	void HX_Shader::SetFloat(const std::string& name, float value)
+	{
+		glUniform1f(glGetUniformLocation(this->m_shaderProgram, name.c_str()), value);
 	}
 
 	HX_ShaderData HX_Shader::ParseShader(const char* data)
