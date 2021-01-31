@@ -1,7 +1,24 @@
-﻿     Creating library L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.lib and object L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exp
+﻿  HorizonXEditor.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+L:\HorizonX-Engine\HorizonX Engine\Include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw.cpp
+  imgui_impl_opengl3.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp
+  Registry.cpp
+  UIManager.cpp
+  Viewport.cpp
+L:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\Viewport.cpp(46,139): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+L:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\Viewport.cpp(46,113): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+L:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\Viewport.cpp(46,87): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+L:\HorizonX-Engine\HorizonX Engine\HorizonXEditor\Viewport.cpp(46,49): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+     Creating library L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.lib and object L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exp
   Generating code
-  0 of 1706 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  598 of 1706 functions (35.1%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    24 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   HorizonXEditor.vcxproj -> L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\HorizonXEditor.exe

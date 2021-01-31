@@ -9,7 +9,7 @@
 
 namespace HX
 {
-	struct HX_API HX_GLWindowData
+	struct HX_API GLWindowData
 	{
 		const char* windowTitle;
 		int xPosition;
@@ -24,12 +24,12 @@ namespace HX
 
 	void HX_API error_callback(int error, const char* description);
 
-	class HX_API HX_GLWindow
+	class HX_API GLWindow
 	{
 	public:
-		HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height);
-		HX_GLWindow(HX_GLWindowData windowData);
-		HX_GLWindow(const HX_GLWindow& window);
+		GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height);
+		GLWindow(GLWindowData windowData);
+		GLWindow(const GLWindow& window);
 
 		bool Initialize();
 
@@ -40,10 +40,10 @@ namespace HX
 		GLFWwindow* GetWindow();
 
 
-		HX_GLWindowData GetWindowData();
-		void SetWindowData(HX_GLWindowData windowData);
+		GLWindowData GetWindowData();
+		void SetWindowData(GLWindowData windowData);
 
-		~HX_GLWindow();
+		~GLWindow();
 
 		void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 
@@ -51,7 +51,7 @@ namespace HX
 
 
 	private:
-		HX_GLWindowData m_windowData;
+		GLWindowData m_windowData;
 
 		GLFWwindow* m_window;
 	};

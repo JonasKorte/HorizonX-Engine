@@ -2,14 +2,14 @@
 
 namespace HX
 {
-	HX_Shader::HX_Shader(const char* path, HX_ShaderToggles toggles)
+	Shader::Shader(const char* path, ShaderToggles toggles)
 	{
 		this->m_path = path;
 		this->m_toggles = toggles;
 		this->m_data = {};
 	}
 
-	HX_Shader::HX_Shader(const HX_Shader& shader)
+	Shader::Shader(const Shader& shader)
 	{
 		this->m_data = shader.m_data;
 
@@ -18,7 +18,7 @@ namespace HX
 		this->m_toggles = shader.m_toggles;
 	}
 
-	bool HX_Shader::LoadShader()
+	bool Shader::LoadShader()
 	{
 
 		std::ifstream ifs(this->m_path);
@@ -46,7 +46,7 @@ namespace HX
 
 		ifs.close();
 
-		HX_ShaderData data = this->ParseShader(raw);
+		ShaderData data = this->ParseShader(raw);
 
 		int success = 0;
 
@@ -211,35 +211,40 @@ namespace HX
 		return true;
 	}
 
-	bool HX_Shader::BindShader()
+	bool Shader::BindShader()
 	{
 		glUseProgram(this->m_shaderProgram);
 
 		return true;
 	}
 
-	HX_Shader::~HX_Shader()
+	Shader::~Shader()
 	{
 		glDeleteProgram(this->m_shaderProgram);
 	}
-	void HX_Shader::SetBool(const std::string& name, bool value)
+	void Shader::SetBool(const std::string& name, bool value)
 	{
 		glUniform1i(glGetUniformLocation(this->m_shaderProgram, name.c_str()), (int)value);
 	}
 
-	void HX_Shader::SetInt(const std::string& name, int value)
+	void Shader::SetInt(const std::string& name, int value)
 	{
 		glUniform1i(glGetUniformLocation(this->m_shaderProgram, name.c_str()), value);
 	}
 
-	void HX_Shader::SetFloat(const std::string& name, float value)
+	void Shader::SetFloat(const std::string& name, float value)
 	{
 		glUniform1f(glGetUniformLocation(this->m_shaderProgram, name.c_str()), value);
 	}
 
-	HX_ShaderData HX_Shader::ParseShader(const char* data)
+	void Shader::SetColor(const std::string& name, Color value)
 	{
-		HX_ShaderData shaderSource = {};
+		glUniform4f(glGetUniformLocation(this->m_shaderProgram, name.c_str()), value.r, value.g, value.b, value.a);
+	}
+
+	ShaderData Shader::ParseShader(const char* data)
+	{
+		ShaderData shaderSource = {};
 
 		const char* token = "";
 

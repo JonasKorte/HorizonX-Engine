@@ -2,7 +2,7 @@
 
 namespace HX
 {
-	HX_GLWindow::HX_GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height)
+	GLWindow::GLWindow(const char* windowTitle, int xPosition, int yPosition, int width, int height)
 	{
 		this->m_windowData.windowTitle = windowTitle;
 		this->m_windowData.xPosition = xPosition;
@@ -17,19 +17,19 @@ namespace HX
 		this->m_window = NULL;
 	}
 
-	HX_GLWindow::HX_GLWindow(HX_GLWindowData windowData)
+	GLWindow::GLWindow(GLWindowData windowData)
 	{
 		this->m_windowData = windowData;
 		this->m_window = NULL;
 	}
 
-	HX_GLWindow::HX_GLWindow(const HX_GLWindow& window)
+	GLWindow::GLWindow(const GLWindow& window)
 	{
 		this->m_windowData = window.m_windowData;
 		this->m_window = window.m_window;
 	}
 
-	HX_GLWindow::~HX_GLWindow()
+	GLWindow::~GLWindow()
 	{
 		LOGINFO("Quiting...");
 
@@ -38,7 +38,7 @@ namespace HX
 		glfwTerminate();
 	}
 
-	bool HX_GLWindow::Initialize()
+	bool GLWindow::Initialize()
 	{
 		LOGINFO("Initializing GLFW...");
 
@@ -99,7 +99,7 @@ namespace HX
 
 		auto framebuffer_size_func = [](GLFWwindow* window, int width, int height)
 		{
-			static_cast<HX_GLWindow*>(glfwGetWindowUserPointer(window))->framebuffer_size_callback(window, width, height);
+			static_cast<GLWindow*>(glfwGetWindowUserPointer(window))->framebuffer_size_callback(window, width, height);
 		};
 
 		glfwSetFramebufferSizeCallback(this->m_window, framebuffer_size_func);
@@ -111,12 +111,12 @@ namespace HX
 		return true;
 	}
 
-	void HX_GLWindow::Clear()
+	void GLWindow::Clear()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	}
 
-	bool HX_GLWindow::Update()
+	bool GLWindow::Update()
 	{
 		glfwSwapBuffers(this->m_window);
 		glfwPollEvents();
@@ -129,12 +129,12 @@ namespace HX
 		LOGERR(description);
 	}
 
-	void HX_GLWindow::framebuffer_size_callback(GLFWwindow* window, int width, int height)
+	void GLWindow::framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	{
 		glViewport(0, 0, width, height);
 	}
 
-	void HX_GLWindow::SetViewport(float xPosition, float yPosition, float width, float height)
+	void GLWindow::SetViewport(float xPosition, float yPosition, float width, float height)
 	{
 		this->m_windowData.viewportX = xPosition;
 		this->m_windowData.viewportY = yPosition;
@@ -142,12 +142,12 @@ namespace HX
 		this->m_windowData.height = height;
 	}
 
-	GLFWwindow* HX_GLWindow::GetWindow()
+	GLFWwindow* GLWindow::GetWindow()
 	{
 		return this->m_window;
 	}
 
-	HX_GLWindowData HX_GLWindow::GetWindowData()
+	GLWindowData GLWindow::GetWindowData()
 	{
 		return this->m_windowData;
 	}

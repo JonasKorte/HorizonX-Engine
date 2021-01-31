@@ -2,13 +2,14 @@
 #include "API.h"
 #include "Log.h"
 #include "glad/glad.h"
+#include "Color.h"
 #include <fstream>
 #include <map>
 #include <string>
 
 namespace HX
 {
-	struct HX_API HX_ShaderToggles
+	struct HX_API ShaderToggles
 	{
 		bool hasVertex = true;
 		bool hasFragment = true;
@@ -16,7 +17,7 @@ namespace HX
 		bool hasTesselation = false;
 		bool hasCompute = false;
 	};
-	struct HX_API HX_ShaderData
+	struct HX_API ShaderData
 	{
 		const char* vertexData;
 		const char* fragmentData;
@@ -26,14 +27,14 @@ namespace HX
 		const char* computeData;
 	};
 
-	class HX_API HX_Shader
+	class HX_API Shader
 	{
 	public:
-		HX_Shader(const char* path, HX_ShaderToggles toggles);
+		Shader(const char* path, ShaderToggles toggles);
 
-		HX_Shader(const HX_Shader& shader);
+		Shader(const Shader& shader);
 
-		~HX_Shader();
+		~Shader();
 
 		bool BindShader();
 
@@ -45,14 +46,16 @@ namespace HX
 
 		void SetFloat(const std::string& name, float value);
 
+		void SetColor(const std::string& name, Color value);
+
 	private:
 		const char* m_path;
 
-		HX_ShaderToggles m_toggles;
+		ShaderToggles m_toggles;
 
-		HX_ShaderData m_data;
+		ShaderData m_data;
 
-		HX_ShaderData ParseShader(const char* data);
+		ShaderData ParseShader(const char* data);
 
 		GLuint m_shaderProgram;
 
