@@ -5,6 +5,7 @@
 #include "Viewport.h"
 #include "UIManager.h"
 #include "Registry.h"
+#include <MeshRenderer.h>
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
