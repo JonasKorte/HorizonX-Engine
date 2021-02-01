@@ -1,18 +1,29 @@
-﻿  Color.h
-  GLWindow.cpp
-L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(139,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(140,34): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(141,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\GLWindow.cpp(142,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Material.cpp
-  MeshRenderer.cpp
-L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\MeshRenderer.h(27,14): warning C4251: 'HX::MeshRenderer::m_mesh': class 'std::vector<HX::Vertex,std::allocator<HX::Vertex>>' needs to have dll-interface to be used by clients of class 'HX::MeshRenderer'
-L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\MeshRenderer.h(17): message : see declaration of 'std::vector<HX::Vertex,std::allocator<HX::Vertex>>'
-  Shader.cpp
-     Creating library L:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.lib and object L:\HorizonX-Engine\HorizonX Engine\Build/Bin64/libhorizon.exp
-  Generating code
-  168 of 602 functions (27.9%) were compiled, the rest were copied from previous compilation.
-    97 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  HorizonX Engine.vcxproj -> L:\HorizonX-Engine\HorizonX Engine\Build\Bin64\libhorizon.dll
+﻿  Material.cpp
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.h(49,140): warning C4251: 'HX::Material::m_parameters': class 'std::map<const char *,std::variant<HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>,std::less<const char *>,std::allocator<std::pair<const char *const ,std::variant<HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>>>>' needs to have dll-interface to be used by clients of class 'HX::Material'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.h(49): message : see declaration of 'std::map<const char *,std::variant<HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>,std::less<const char *>,std::allocator<std::pair<const char *const ,std::variant<HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>>>>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(1324,24): error C2338: get<T>(const variant<Types...>&) requires T to occur exactly once in Types. (N4835 [variant.get]/5)
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(32): message : see reference to function template instantiation 'decltype(auto) std::get<HX::Texture,HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>(const std::variant<HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>> &)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(1286,24): error C2338: variant index out of bounds
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(1322): message : see reference to function template instantiation 'decltype(auto) std::get<18446744073709551615,HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>(const std::variant<HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>> &)' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(622,48): error C2039: '_Tail': is not a member of 'std::_Variant_storage_<true>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(449): message : see declaration of 'std::_Variant_storage_<true>'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(1285): message : see reference to function template instantiation 'decltype(auto) std::_Variant_raw_get<18446744073709551615,const std::_Variant_storage_<true,HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>>&>(_Storage) noexcept' being compiled
+          with
+          [
+              _Storage=const std::_Variant_storage_<true,HX::Parameter<HX::Texture>,HX::Parameter<HX::Color>,HX::Parameter<float>,HX::Parameter<int>,HX::Parameter<bool>> &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\variant(620,16): error C2672: 'std::_Variant_raw_get': no matching overloaded function found
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(32,54): error C2440: 'initializing': cannot convert from 'void' to 'HX::Parameter<HX::Texture>'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(32,30): message : Expressions of type void cannot be converted to other types
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(53,55): error C2664: 'void HX::Shader::SetColor(const std::string &,HX::Color)': cannot convert argument 2 from 'void' to 'HX::Color'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(53,50): message : Expressions of type void cannot be converted to other types
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Shader.h(49,8): message : see declaration of 'HX::Shader::SetColor'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(58,55): error C2664: 'void HX::Shader::SetFloat(const std::string &,float)': cannot convert argument 2 from 'void' to 'float'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(58,50): message : Expressions of type void cannot be converted to other types
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Shader.h(47,8): message : see declaration of 'HX::Shader::SetFloat'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(63,51): error C2664: 'void HX::Shader::SetInt(const std::string &,int)': cannot convert argument 2 from 'void' to 'int'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(63,46): message : Expressions of type void cannot be converted to other types
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Shader.h(45,8): message : see declaration of 'HX::Shader::SetInt'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(68,53): error C2664: 'void HX::Shader::SetBool(const std::string &,bool)': cannot convert argument 2 from 'void' to 'bool'
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Material.cpp(68,48): message : Expressions of type void cannot be converted to other types
+L:\HorizonX-Engine\HorizonX Engine\HorizonX Engine\Shader.h(43,8): message : see declaration of 'HX::Shader::SetBool'

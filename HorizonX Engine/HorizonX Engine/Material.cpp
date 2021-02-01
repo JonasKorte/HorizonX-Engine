@@ -16,48 +16,59 @@ namespace HX
 
 	Material::~Material()
 	{
-		delete this->m_shader;
+
 	}
 
 	void Material::Bind()
 	{
 		this->m_shader->BindShader();
 
+		int textureUnit = 0;
+
 		for (auto const& [key, val] : this->m_parameters)
 		{
 			if (val.index() == 0)
 			{
-				Parameter<Texture> param = std::get<Texture>(val);
+				Parameter<Texture> param = std::get<Parameter<Texture>>(val);
 
 				GLuint tex;
 
 				glGenTextures(1, &tex);
 
+				glActiveTexture(GL_TEXTURE0 + textureUnit);
+
 				glBindTexture(GL_TEXTURE_2D, tex);
+
+				const char* pixels = "";
+
 
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+				this->m_shader->SetInt(key, textureUnit);
+
+				textureUnit++;
 
 			}
 
 			else if (val.index() == 1)
 			{
-				this->m_shader->SetColor(key, std::get<Color>(val));
+				this->m_shader->SetColor(key, std::get<Parameter<Color>>(val).value);
 			}
 
 			else if (val.index() == 2)
 			{
-				this->m_shader->SetFloat(key, std::get<float>(val));
+				this->m_shader->SetFloat(key, std::get<Parameter<float>>(val).value);
 			}
 
 			else if (val.index() == 3)
 			{
-				this->m_shader->SetInt(key, std::get<int>(val));
+				this->m_shader->SetInt(key, std::get<Parameter<int>>(val).value);
 			}
 
 			else if (val.index() == 4)
 			{
-				this->m_shader->SetBool(key, std::get<bool>(val));
+				this->m_shader->SetBool(key, std::get<Parameter<bool>>(val).value);
 			}
 		}
 	}
