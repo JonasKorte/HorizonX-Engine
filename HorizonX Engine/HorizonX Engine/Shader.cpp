@@ -35,9 +35,10 @@ namespace HX
 			return false;
 		}
 
-		const char* raw = "";
+		std::string raw = "";
 
 		char c = ifs.get();
+
 
 		while (ifs.good()) {
 			raw += c;
@@ -46,7 +47,7 @@ namespace HX
 
 		ifs.close();
 
-		ShaderData data = this->ParseShader(raw);
+		this->m_data = this->ParseShader(raw.c_str());
 
 		int success = 0;
 
@@ -55,6 +56,7 @@ namespace HX
 		if (this->m_toggles.hasVertex)
 		{
 			this->m_vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
 
 			glShaderSource(this->m_vertexShader, 1, &this->m_data.vertexData, NULL);
 
@@ -246,16 +248,18 @@ namespace HX
 	{
 		ShaderData shaderSource = {};
 
-		const char* token = "";
+		std::string token = "";
 
 		int line = 0;
 		const char* current = "";
 
-		std::string shader;
+		std::string shader = "";
 
 
 		for (int i = 0; i < sizeof(data); i++)
 		{
+			LOGINFO(current);
+
 			if (current == "")
 			{
 				char c = data[i];
@@ -267,6 +271,7 @@ namespace HX
 					line++;
 				}
 
+
 				if (c == ' ')
 				{
 					token = "";
@@ -275,38 +280,46 @@ namespace HX
 				if (token == "<vertex>")
 				{
 					current = "vertex";
+					token = "";
 				}
 
 				else if (token == "<fragment>")
 				{
 					current = "fragment";
+					token = "";
 				}
 
 				else if (token == "<geometry>")
 				{
 					current = "geometry";
+					token = "";
 				}
 
 				else if (token == "<tess_control>")
 				{
 					current = "tesselation_control";
+					token = "";
 				}
 
 				else if (token == "<tess_eval>")
 				{
 					current = "tesselation_eval";
+					token = "";
 				}
 
 				else if (token == "<compute>")
 				{
 					current = "compute";
+					token = "";
 				}
 			}
 
-			else if (current == "vertex")
+			if (current == "vertex")
 			{
 				char c = data[i];
 				token += c;
+
+				current = "vertex";
 
 				shader += c;
 
@@ -321,9 +334,17 @@ namespace HX
 					token = "";
 				}
 
+				LOGINFO(token);
+
+
 				if (token == "</vertex>")
 				{
+					
+
 					shader.erase(shader.end() - 9, shader.end());
+
+					LOGINFO(shader);
+
 					shaderSource.vertexData = shader.c_str();
 
 					token = "";
@@ -346,6 +367,11 @@ namespace HX
 				}
 
 				if (c == ' ')
+				{
+					token = "";
+				}
+
+				if (c != '<')
 				{
 					token = "";
 				}
@@ -379,6 +405,11 @@ namespace HX
 					token = "";
 				}
 
+				if (c != '<')
+				{
+					token = "";
+				}
+
 				if (token == "</geometry>")
 				{
 					shader.erase(shader.end() - 11, shader.end());
@@ -404,6 +435,11 @@ namespace HX
 				}
 
 				if (c == ' ')
+				{
+					token = "";
+				}
+
+				if (c != '<')
 				{
 					token = "";
 				}
@@ -437,6 +473,11 @@ namespace HX
 					token = "";
 				}
 
+				if (c != '<')
+				{
+					token = "";
+				}
+
 				if (token == "</tess_eval>")
 				{
 					shader.erase(shader.end() - 12, shader.end());
@@ -462,6 +503,11 @@ namespace HX
 				}
 
 				if (c == ' ')
+				{
+					token = "";
+				}
+
+				if (c != '<')
 				{
 					token = "";
 				}

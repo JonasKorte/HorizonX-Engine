@@ -43,6 +43,9 @@ namespace HX
 		GLWindowData GetWindowData();
 		void SetWindowData(GLWindowData windowData);
 
+		GLADloadproc GetLoadProc();
+
+
 		~GLWindow();
 
 		void framebuffer_size_callback(GLFWwindow* window, int width, int height);

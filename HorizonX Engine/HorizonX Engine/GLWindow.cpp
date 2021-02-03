@@ -17,6 +17,11 @@ namespace HX
 		this->m_window = NULL;
 	}
 
+	GLADloadproc GLWindow::GetLoadProc()
+	{
+		return (GLADloadproc)glfwGetProcAddress;
+	}
+
 	GLWindow::GLWindow(GLWindowData windowData)
 	{
 		this->m_windowData = windowData;
@@ -52,8 +57,6 @@ namespace HX
 
 		glfwSetErrorCallback(error_callback);
 
-		GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-
 		glfwWindowHint(GLFW_RED_BITS, 8);
 		glfwWindowHint(GLFW_GREEN_BITS, 8);
 		glfwWindowHint(GLFW_BLUE_BITS, 8);
@@ -69,7 +72,7 @@ namespace HX
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-		this->m_window = glfwCreateWindow(this->m_windowData.width, this->m_windowData.height, this->m_windowData.windowTitle, monitor, NULL);
+		this->m_window = glfwCreateWindow(this->m_windowData.width, this->m_windowData.height, this->m_windowData.windowTitle, NULL, NULL);
 
 		if (!this->m_window)
 		{

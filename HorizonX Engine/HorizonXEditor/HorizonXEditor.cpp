@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include "Viewport.h"
+#include "GLWindow.h"
 #include "UIManager.h"
 #include "Registry.h"
 #include <MeshRenderer.h>
@@ -33,70 +34,22 @@ int main()
     NEWLINE();
     NEWLINE();
 
-	LOGINFO("Initializing GLFW...");
 
-	if (!glfwInit())
+	GLWindow* window = new GLWindow("HorizonX Editor v1.0 - <OpenGL 3.3>", 0, 0, 1920, 1080);
+
+	if (!window->Initialize())
 	{
-		LOGERR("Failed to initialized GLFW!");
-		return false;
+		return -1;
 	}
 
-	LOGINFO("GLFW Initialized successfully!");
-
-	glfwSetErrorCallback(error_callback);
-
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-
-	glfwWindowHint(GLFW_RED_BITS, 8);
-	glfwWindowHint(GLFW_GREEN_BITS, 8);
-	glfwWindowHint(GLFW_BLUE_BITS, 8);
-	glfwWindowHint(GLFW_ALPHA_BITS, 8);
-	glfwWindowHint(GLFW_DOUBLEBUFFER, 1);
-	glfwWindowHint(GLFW_DEPTH_BITS, 24);
-	glfwWindowHint(GLFW_STENCIL_BITS, 8);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
-
-
-	LOGINFO("Creating window...");
-
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-
-	glfwWindowHint(GLFW_MAXIMIZED, 1);
-
-	GLFWwindow* editorWindow = glfwCreateWindow(1920, 1080, "HorizonX Engine v1.0 - <OpenGL 3.3>", NULL, NULL);
-
-	if (!editorWindow)
+	if (!gladLoadGLLoader(window->GetLoadProc()))
 	{
-		LOGERR("Failed to create window!");
+		delete window;
 
-		return false;
+		glfwTerminate();
+
+		return -1;
 	}
-
-	LOGINFO("Window initialized successfully!");
-
-	glfwMakeContextCurrent(editorWindow);
-
-	glfwSwapInterval(1);
-
-	LOGINFO("Loading OpenGL...");
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		LOGERR("Failed to load OpenGL!");
-
-		return false;
-	}
-
-	LOGINFO("OpenGL loaded successfully!");
-
-
-	glfwSetFramebufferSizeCallback(editorWindow, framebuffer_size_callback);
-
-	glClearColor(0.25f, 0.25f, 0.25f, 1.0f);
-
-	glViewport(0, 0, 1920, 1080);
 
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -108,7 +61,7 @@ int main()
 
 	io.Fonts->GetTexDataAsRGBA32(&p, &w, &h);
 
-	ImGui_ImplGlfw_InitForOpenGL(editorWindow, true);
+	ImGui_ImplGlfw_InitForOpenGL(window->GetWindow(), true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	ImGui::StyleColorsDark();
@@ -119,8 +72,6 @@ int main()
 
 	HX_ID viewportID = HX_UIManager::RegisterComponent(viewportComponent);
 
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
 	ImGui::NewFrame();
 	ImGui_ImplGlfw_NewFrame();
 	ImGui_ImplOpenGL3_NewFrame();
@@ -129,9 +80,6 @@ int main()
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
-	glfwSwapBuffers(editorWindow);
-	glfwPollEvents();
 
 	ImGui::EndFrame();
 
@@ -143,7 +91,23 @@ int main()
 	toggles.hasTesselation = false;
 	toggles.hasCompute = false;
 
-	Shader* shader = new Shader("L:\\HorizonX-Engine\\HorizonX Engine\\Build\\Shaders\\Default.hxshader", toggles);
+	Shader* shader = new Shader("L:/HorizonX-Engine/HorizonX Engine/Build/Shaders/Default.hxshader", toggles);
+
+	if (!shader->LoadShader())
+	{
+		LOGERR("Failed to load shader!");
+
+		ImGui_ImplOpenGL3_Shutdown();
+		ImGui_ImplGlfw_Shutdown();
+
+		ImGui::DestroyContext();
+
+		delete window;
+
+		glfwTerminate();
+		return -1;
+	}
+
 
 	Material* material = new Material(shader);
 
@@ -175,9 +139,9 @@ int main()
 
 	meshRenderer->Initialize();
 
-	while (!glfwWindowShouldClose(editorWindow))
+	while (!glfwWindowShouldClose(window->GetWindow()))
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		window->Clear();
 
 		ImGui::NewFrame();
 		ImGui_ImplGlfw_NewFrame();
@@ -190,15 +154,22 @@ int main()
 
 		meshRenderer->Draw();
 
-		glfwSwapBuffers(editorWindow);
-		glfwPollEvents();
-
 		ImGui::EndFrame();
+
+		window->Update();
 	}
 
 	HX_UIManager::UnloadComponent(viewportID);
 
 	HX_UIManager::UnregisterComponent(viewportID);
+
+	delete meshRenderer;
+
+	delete material;
+
+	delete shader;
+
+	delete window;
 
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();

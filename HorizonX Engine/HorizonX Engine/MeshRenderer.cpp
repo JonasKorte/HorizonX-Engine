@@ -19,7 +19,6 @@ namespace HX
 
 	MeshRenderer::~MeshRenderer()
 	{
-
 	}
 
 	void MeshRenderer::Initialize()
@@ -43,13 +42,13 @@ namespace HX
 				switch (j)
 				{
 				case 0:
-					vertices[i] = position.x;
+					vertices.push_back(position.x);
 					break;
 				case 1:
-					vertices[i] = position.y;
+					vertices.push_back(position.y);
 					break;
 				case 2:
-					vertices[i] = position.z;
+					vertices.push_back(position.z);
 					break;
 				}
 			}
