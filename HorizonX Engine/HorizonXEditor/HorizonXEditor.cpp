@@ -135,6 +135,46 @@ int main()
 
 	ImGui::EndFrame();
 
+	ShaderToggles toggles = {};
+
+	toggles.hasVertex = true;
+	toggles.hasFragment = true;
+	toggles.hasGeometry = false;
+	toggles.hasTesselation = false;
+	toggles.hasCompute = false;
+
+	Shader* shader = new Shader("L:\\HorizonX-Engine\\HorizonX Engine\\Build\\Shaders\\Default.hxshader", toggles);
+
+	Material* material = new Material(shader);
+
+	Vertex v1 = {};
+
+	v1.position.x = 0.0f;
+	v1.position.y = 1.0f;
+	v1.position.z = 0.0f;
+
+	Vertex v2 = {};
+
+	v2.position.x = -1.0f;
+	v2.position.y = -1.0f;
+	v2.position.z = 0.0f;
+
+	Vertex v3 = {};
+
+	v3.position.x = 1.0f;
+	v3.position.y = -1.0f;
+	v3.position.z = 0.0f;
+
+	Mesh mesh;
+
+	mesh.push_back(v1);
+	mesh.push_back(v2);
+	mesh.push_back(v3);
+
+	MeshRenderer* meshRenderer = new MeshRenderer(mesh, material);
+
+	meshRenderer->Initialize();
+
 	while (!glfwWindowShouldClose(editorWindow))
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -147,6 +187,8 @@ int main()
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		meshRenderer->Draw();
 
 		glfwSwapBuffers(editorWindow);
 		glfwPollEvents();
